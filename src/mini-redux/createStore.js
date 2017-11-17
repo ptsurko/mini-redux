@@ -1,30 +1,38 @@
-const createStore = (reducer) => {
-  let state
-  let listeners = []
+
+// TODO: Enhancers should wrap whold createStore method
+const createStore = (reducer, initialState, enhancer) => {
+  let state = initialState;
+  let listeners = [];
 
   const getState = () => {
-    return state
-  }
-  const dispatch = (action) => {
-    state = reducer(state, action)
+    return state;
+  };
 
-    listeners.forEach(l => l())
-  }
-  const subscribe = (listener) => {
-    listeners.push(listener)
+  let dispatch = (action) => {
+    state = reducer(state, action);
+
+    listeners.forEach((listener) => listener());
+
+    return action;
+  };
+
+  dispatch = enhancer(dispatch, getState);
+
+  const subscribe = (newListener) => {
+    listeners.push(newListener);
 
     return () => {
-      listeners = listeners.filter(l => l !== listener)
-    }
-  }
+      listeners = listeners.filter((listener) => listener !== newListener);
+    };
+  };
 
-  dispatch({ type: '@INIT' })
+  dispatch({ type: '@INIT' });
 
   return {
     getState,
     dispatch,
-    subscribe
-  }
-}
+    subscribe,
+  };
+};
 
-export default createStore
+export default createStore;

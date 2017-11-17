@@ -1,19 +1,51 @@
+import { createSelector, createStructuredSelector } from './../mini-redux/createSelector'
 
-import createSelector from './../mini-redux/createSelector'
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+export const increment = () => {
+  return { type: INCREMENT };
+};
+
+export const asyncIncrement = () => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(increment());
+    }, 1000);
+  };
+};
+
+export const decrement = () => {
+  return { type: DECREMENT };
+};
+
+export const asyncDecrement = () => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(decrement());
+    }, 1000);
+  };
+};
+
 
 export default (state = 0, action) => {
-  if (action.type === 'INCREMENT') {
-    return state + 1
-  } else if (action.type === 'DECREMENT') {
-    return state - 1
-  } else {
-    return state
+  if (action.type === INCREMENT) {
+    return state + 1;
+  } else if (action.type === DECREMENT) {
+    return state - 1;
   }
-}
 
-export const counterSelector = (state) => state.counter
+  return state;
+};
+
+export const counterSelector = (state) => state.counter;
 
 export const doubleCounterSelector = createSelector(
   counterSelector,
-  counter => counter * 2
-)
+  (counter) => counter * 2,
+);
+
+export const structuredSelector = createStructuredSelector({
+  counter: counterSelector,
+  doubleCounter: doubleCounterSelector,
+});

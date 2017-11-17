@@ -1,11 +1,9 @@
-
 const combineReducers = (reducers) => (state = {}, action) => {
-  const result = {}
-  for (const key in reducers) {
-    result[key] = reducers[key](state[key], action)
-  }
+  return Object.entries(reducers).reduce((result, [key, reducer]) => {
+    result[key] = reducer(state[key], action);
 
-  return result
-}
+    return result;
+  }, {});
+};
 
-export default combineReducers
+export default combineReducers;

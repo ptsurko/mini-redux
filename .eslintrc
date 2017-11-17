@@ -1,0 +1,24 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  // "extends": ["eslint:recommended", "airbnb", "google"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "require-jsdoc": 0,
+    "max-len": ["error", { "code": 100 }],
+    "object-curly-spacing": ["error", "always"],
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/forbid-prop-types": 0,
+    "arrow-body-style": 0,
+    "function-paren-newline": 0,
+    "no-param-reassign": 0
+  }
+}

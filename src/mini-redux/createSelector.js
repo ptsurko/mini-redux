@@ -1,45 +1,50 @@
 
 const areArraysEqual = (array1, array2) => {
   if (array1 === array2) {
-    return true
+    return true;
   }
 
   if (array1.length !== array2.length) {
-    return false
+    return false;
   }
 
-  let areEquals = true
+  let areEquals = true;
   array1.forEach((item, index) => {
-    areEquals = areEquals && (array1[index] === array2[index])
-  })
+    areEquals = areEquals && (array1[index] === array2[index]);
+  });
 
-  return areEquals
-}
+  return areEquals;
+};
 
-const createSelector = (...args) => {
-  const computeSelector = args[args.length - 1]
-  const inputSelectors = args.slice(0, args.length - 1)
+export const createSelector = (...args) => {
+  const computeSelector = args[args.length - 1];
+  const inputSelectors = args.slice(0, args.length - 1);
 
-  let cacheStates = []
-  let cacheResult = undefined
+  let cacheStates = [];
+  let cacheResult;
 
   return (state, props) => {
-    const inputStates = inputSelectors.map(s => s(state, props))
+    const inputStates = inputSelectors.map((selector) => selector(state, props));
 
     if (!areArraysEqual(inputStates, cacheStates)) {
-      cacheStates = inputStates
-      cacheResult = computeSelector(...inputStates)
+      cacheStates = inputStates;
+      cacheResult = computeSelector(...inputStates);
     }
 
-    return cacheResult
-  }
-}
+    return cacheResult;
+  };
+};
 
-const createStructuredSelector = (inputSelectorsMap) => {
-  // const
-  // for (let key of inputSelectorsMap) {
+export const createStructuredSelector = (inputSelectorsMap) => {
+  const keyToSelectorPairs = Object.entries(inputSelectorsMap);
+  const selectors = keyToSelectorPairs.map((pair) => pair[1]);
+  return createSelector(...selectors, (...args) => {
+    return args.reduce((result, selectorResult, index) => {
+      const key = keyToSelectorPairs[index][0];
+      result[key] = selectorResult;
+      return result;
+    }, {});
+  });
+};
 
-  // }
-}
-
-export default createSelector
+export default createSelector;

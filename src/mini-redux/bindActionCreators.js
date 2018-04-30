@@ -1,19 +1,18 @@
 
-const wrapActionCreator = (actionCreator, dispatch) => {
-  return (...args) => {
-    dispatch(actionCreator(...args));
-  };
-};
+const isFunction = (obj) => typeof obj === 'function';
+const isObject = (obj) => obj === Object(obj);
+
+const wrapDispatch = (actionCreator, dispatch) => (params) => dispatch(actionCreator(params));
 
 const bindActionCreators = (actionCreators, dispatch) => {
-  if (typeof actionCreators === 'function') {
-    return wrapActionCreator(actionCreators, dispatch);
+  if (isFunction(actionCreators)) {
+    return wrapDispatch(actionCreators, dispatch);
+  } else if (isObject(actionCreators)) {
+    return Object.keys(actionCreators).reduce((result, key) => {
+      result[key] = wrapDispatch(actionCreators[key], dispatch);
+      return result;
+    }, {});
   }
-
-  return Object.entries(actionCreators).reduce((boundActionCreators, [key, actionCreator]) => {
-    boundActionCreators[key] = wrapActionCreator(actionCreator, dispatch);
-    return boundActionCreators;
-  }, {});
 };
 
 export default bindActionCreators;

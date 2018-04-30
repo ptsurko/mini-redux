@@ -1,4 +1,4 @@
-import { createSelector, createStructuredSelector } from './../mini-redux/createSelector'
+import { createSelector } from './../mini-redux/createSelector';
 
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
@@ -44,8 +44,3 @@ export const doubleCounterSelector = createSelector(
   counterSelector,
   (counter) => counter * 2,
 );
-
-export const structuredSelector = createStructuredSelector({
-  counter: counterSelector,
-  doubleCounter: doubleCounterSelector,
-});

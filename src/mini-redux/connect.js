@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName ||
-         WrappedComponent.name ||
-         'Component';
-}
+import { setDisplayName, wrapDisplayName } from '../mini-recompose';
 
 // TODO: Specifically, every time an action is dispatched and subscribers are notified, connect
 // checks to see if the root state object has changed. If it hasn't, connect assumes that nothing
@@ -17,33 +12,37 @@ function getDisplayName(WrappedComponent) {
 // connect will not actually re-render the wrapped component. These equality checks in connect
 // are why accidental state mutations result in components not re-rendering, because connect
 // assumes that data hasn't changed and re-rendering isn't needed.
-const connect = (mapStateToProps = () => {}, mapDispatchToProps = () => {}) => {
-  return (Component) => {
-    return class extends React.Component {
-      static contextTypes = {
-        store: PropTypes.object,
-      }
+const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
+  class Connect extends React.Component {
+    componentDidMount() {
+      this.unsubscribe = this.context.store.subscribe(() => {
+        // TODO: Optimize: compare new props with previous
+        this.forceUpdate();
+      });
+    }
 
-      static displayName = `connect${getDisplayName(Component)}`
+    componentWillUnmount() {
+      this.unsubscribe();
+    }
 
-      componentDidMount() {
-        this.unsubscribeFromStore = this.context.store.subscribe(() => this.forceUpdate())
-      }
+    render() {
+      const state = this.context.store.getState();
+      const dispatch = this.context.store.dispatch;
+      return (
+        <WrappedComponent
+          {...this.props}
+          {...mapStateToProps(state, this.props)}
+          {...mapDispatchToProps(dispatch, this.props)}
+        />
+      );
+    }
+  }
 
-      componentWillUnmount() {
-        this.unsubscribeFromStore();
-      }
-
-      render() {
-        const { store } = this.context;
-        const mergedStateProps = { ...mapStateToProps(store.getState()), ...this.props };
-        const mergedDispatchProps = mapDispatchToProps(store.dispatch);
-        const props = { ...mergedStateProps, ...mergedDispatchProps, ...this.props };
-
-        return <Component {...props} />;
-      }
-    };
+  Connect.contextTypes = {
+    store: PropTypes.object.isRequired,
   };
+
+  return setDisplayName(wrapDisplayName(WrappedComponent, 'connect'))(Connect);
 };
 
 export default connect;

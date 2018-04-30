@@ -1,9 +1,11 @@
-const combineReducers = (reducers) => (state = {}, action) => {
-  return Object.entries(reducers).reduce((result, [key, reducer]) => {
-    result[key] = reducer(state[key], action);
+const combineReducers = (reducers) => {
+  return (state, action) => {
+    return Object.keys(reducers).reduce((result, key) => {
+      result[key] = reducers[key](state[key], action);
 
-    return result;
-  }, {});
+      return result;
+    }, {});
+  };
 };
 
 export default combineReducers;

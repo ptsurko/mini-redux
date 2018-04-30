@@ -1,4 +1,4 @@
-
+import compose from './compose';
 // The middleware can now:
 // 1) Pass the action on to the next part of the pipeline using next(action)
 // 2) Send an action to the start of the pipeline with store.dispatch()
@@ -6,18 +6,15 @@
 // or anything else it wants to do!
 
 // TODO: Should wrap createStore method
+const applyMiddleware = (...middlewares) => ({ dispatch, getState, subscribe }) => {
+  const newDispatch = compose(
+    ...middlewares.map((middleware) => middleware({ dispatch, getState }))
+  )(dispatch);
 
-const applyMiddleware = (...middlewares) => {
-  return (dispatch, getState) => {
-    middlewares = middlewares.reverse();
-    return function wrappedDispatch(...args) {
-      let prevDispatch = dispatch;
-
-      middlewares.forEach((middleware) => {
-        prevDispatch = middleware({ dispatch: wrappedDispatch, getState })(prevDispatch);
-      });
-      return prevDispatch(...args);
-    };
+  return {
+    getState,
+    dispatch: newDispatch,
+    subscribe,
   };
 };
 

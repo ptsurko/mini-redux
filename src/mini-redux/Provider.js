@@ -2,14 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Provider extends React.Component {
-  static propTypes = {
-    store: PropTypes.object.isRequired,
-  }
-
-  static childContextTypes = {
-    store: PropTypes.object,
-  };
-
   getChildContext() {
     return {
       store: this.props.store,
@@ -17,8 +9,16 @@ class Provider extends React.Component {
   }
 
   render() {
-    return <div>{this.props.children}</div>;
+    return this.props.children;
   }
 }
+
+Provider.propTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+Provider.childContextTypes = {
+  store: PropTypes.object.isRequired,
+};
 
 export default Provider;

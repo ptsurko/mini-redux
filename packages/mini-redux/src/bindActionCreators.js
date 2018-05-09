@@ -13,6 +13,8 @@ const bindActionCreators = (actionCreators, dispatch) => {
       return result;
     }, {});
   }
+
+  return null;
 };
 
 export default bindActionCreators;

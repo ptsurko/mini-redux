@@ -25,6 +25,8 @@
   - [ ] thunkMiddleware
   - [ ] promiseMiddleware
   - [ ] simple sagaMiddleware
+  - [ ] simple redux-observable middleware - https://redux-observable.js.org/
+    - [ ] Netflix JavaScript Talks - RxJS + Redux + React = Amazing! https://www.youtube.com/watch?v=AslncyG8whg
 - [ ] High order components - https://medium.freecodecamp.org/higher-order-components-the-ultimate-guide-b453a68bb851
   - [ ] With props - https://github.com/acdlite/recompose/blob/master/docs/API.md#withprops
 - [ ] router
@@ -36,3 +38,7 @@
  * [БЭМ + React: гибкая архитектура дизайн-системы](https://habrahabr.ru/company/alfa/blog/340522/)
  * [What is the right way to do asynchronous operations in Redux?](https://decembersoft.com/posts/what-is-the-right-way-to-do-asynchronous-operations-in-redux/)
  * [Higher-Order Components: The Ultimate Guide](https://medium.freecodecamp.org/higher-order-components-the-ultimate-guide-b453a68bb851)
+
+## Lerna
+ * https://github.com/lerna/lerna/issues/1006
+ * https://github.com/dmk255/lerna-webpack-example

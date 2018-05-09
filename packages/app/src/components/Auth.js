@@ -1,7 +1,6 @@
 
 import React from 'react';
-// import compose from '../mini-redux/compose';
-import { withUser } from '../mini-components/User';
+import { withUser } from '@ptsurko/mini-components';
 
 export default withUser(({ user }) => (
   <div>

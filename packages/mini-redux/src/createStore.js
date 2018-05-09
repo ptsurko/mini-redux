@@ -16,8 +16,8 @@ const createStore = (reducer, initialState, enhancer) => {
   const subscribe = (listener) => {
     listeners.push(listener);
 
-    return (listener) => {
-      listeners = listeners.filter((l) => l !== listener);
+    return (listenerToUnsubscribe) => {
+      listeners = listeners.filter((l) => l !== listenerToUnsubscribe);
     };
   };
 

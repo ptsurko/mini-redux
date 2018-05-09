@@ -1,6 +1,6 @@
 import React from 'react';
-import compose from '../mini-redux/compose';
-import { withProps, pure } from '../mini-recompose';
+import { compose } from '@ptsurko/mini-redux';
+import { withProps } from '@ptsurko/mini-recompose';
 
 class Timer extends React.Component {
   constructor(props) {

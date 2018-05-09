@@ -1,4 +1,4 @@
-import { createSelector } from './../mini-redux/createSelector';
+import { createSelector } from '@ptsurko/mini-redux';
 
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';

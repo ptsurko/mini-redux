@@ -1,9 +1,8 @@
 import React from 'react';
+import { Section, Heading as H, User } from '@ptsurko/mini-components';
 import Counter from './Counter';
 import Timer from './Timer';
 import Auth from './Auth';
-import { Section, Heading as H } from './../mini-components/Heading';
-import { User } from './../mini-components/User';
 
 class App extends React.Component {
   render() {

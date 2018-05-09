@@ -1,17 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import connect from '../mini-redux/connect';
-import bindActionCreators from '../mini-redux/bindActionCreators';
+import { connect, bindActionCreators } from '@ptsurko/mini-redux';
+import { Section, Heading as H } from '@ptsurko/mini-components';
 import Button from './Button';
 import {
-  counterSelector,
-  doubleCounterSelector,
+  // counterSelector,
+  // doubleCounterSelector,
   increment,
   decrement,
-  asyncIncrement,
-  asyncDecrement,
+  // asyncIncrement,
+  // asyncDecrement,
 } from './../reducers/counter';
-import { Section, Heading as H } from './../mini-components/Heading';
 
 class Counter extends React.Component {
   constructor(props) {

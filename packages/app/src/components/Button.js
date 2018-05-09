@@ -1,7 +1,7 @@
 
 import React from 'react';
-import compose from '../mini-redux/compose';
-import { pure } from '../mini-recompose';
+import { compose } from '@ptsurko/mini-redux';
+import { pure } from '@ptsurko/mini-recompose';
 
 
 const Button = ({ children, onClick }) => {

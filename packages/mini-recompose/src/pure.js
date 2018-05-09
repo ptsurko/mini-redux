@@ -1,5 +1,6 @@
 import React from 'react';
-import { setDisplayName, wrapDisplayName } from '../mini-recompose';
+import wrapDisplayName from './wrapDisplayName';
+import setDisplayName from './setDisplayName';
 
 const shallowEqual = (props, newProps) => {
   return true;

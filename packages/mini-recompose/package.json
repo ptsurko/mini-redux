@@ -1,0 +1,16 @@
+{
+  "name": "@ptsurko/mini-recompose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

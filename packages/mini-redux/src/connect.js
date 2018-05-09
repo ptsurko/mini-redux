@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { setDisplayName, wrapDisplayName } from '../mini-recompose';
+import { setDisplayName, wrapDisplayName } from '@ptsurko/mini-recompose';
 
 // TODO: Specifically, every time an action is dispatched and subscribers are notified, connect
 // checks to see if the root state object has changed. If it hasn't, connect assumes that nothing
@@ -27,7 +27,7 @@ const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
 
     render() {
       const state = this.context.store.getState();
-      const dispatch = this.context.store.dispatch;
+      const { dispatch } = this.context.store;
       return (
         <WrappedComponent
           {...this.props}

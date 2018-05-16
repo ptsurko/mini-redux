@@ -1,4 +1,7 @@
 
+const ActionTypes = {
+  INIT: '@redux/INIT',
+};
 
 // TODO: Enhancers should wrap whold createStore method
 const createStore = (reducer, initialState, enhancer) => {
@@ -27,7 +30,9 @@ const createStore = (reducer, initialState, enhancer) => {
     subscribe,
   };
 
-  return enhancer ? enhancer(store) : store;
+  const ehnancedStore = enhancer ? enhancer(store) : store;
+  ehnancedStore.dispatch({ type: ActionTypes.INIT });
+  return ehnancedStore;
 };
 
 export default createStore;

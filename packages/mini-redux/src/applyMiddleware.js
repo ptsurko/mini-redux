@@ -6,16 +6,17 @@ import compose from './compose';
 // or anything else it wants to do!
 
 // TODO: Should wrap createStore method
-const applyMiddleware = (...middlewares) => ({ dispatch, getState, subscribe }) => {
-  const newDispatch = compose(
-    ...middlewares.map((middleware) => middleware({ dispatch, getState }))
-  )(dispatch);
-
-  return {
-    getState,
-    dispatch: newDispatch,
-    subscribe,
+const applyMiddleware = (...middlewares) => (store) => {
+  let newDispatch;
+  const newStore = {
+    ...store,
+    dispatch: (...args) => newDispatch(...args),
   };
+  newDispatch = compose(
+    ...middlewares.map((middleware) => middleware(newStore))
+  )(store.dispatch);
+
+  return newStore;
 };
 
 export default applyMiddleware;

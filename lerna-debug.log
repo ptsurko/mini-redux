@@ -1,0 +1,23 @@
+0 silly input [ 'babel', 'src', '-d', 'dist', '--config-file', '../../.babelrc' ]
+1 silly flags { _: [ 'exec' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   parallel: true,
+1 silly flags   scope: '@ptsurko/mini-*',
+1 silly flags   command: 'babel',
+1 silly flags   args: [ 'src', '-d', 'dist', '--config-file', '../../.babelrc' ] }
+2 verbose rootPath /Users/ptsurko/dev/mini-redux
+3 info version 2.11.0
+4 silly existsSync /Users/ptsurko/dev/mini-redux/VERSION
+5 info scope @ptsurko/mini-*
+6 silly initialize attempt
+7 silly initialize success
+8 silly execute attempt
+9 info exec in 4 package(s): babel src -d dist --config-file ../../.babelrc
+10 error execute callback with error
+11 error Error: Command failed: babel src -d dist --config-file ../../.babelrc
+11 error /bin/sh: babel: command not found
+11 error
+11 error
+11 error     at Promise.all.then.arr (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+11 error     at <anonymous>

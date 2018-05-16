@@ -1,8 +1,7 @@
 import React from 'react';
 import { Section, Heading as H, User } from '@ptsurko/mini-components';
-import Counter from './Counter';
-import Timer from './TimerContainer';
-import Auth from './Auth';
+import Customer from './Customer';
+import Customers from './Customers';
 
 class App extends React.Component {
   render() {
@@ -10,9 +9,8 @@ class App extends React.Component {
       <User.Provider value={{ name: 'John' }}>
         <Section>
           <H>Mini Redux</H>
-          <Counter />
-          <Timer time={10} />
-          <Auth />
+          <Customer id={1} />
+          <Customers />
         </Section>
       </User.Provider>
     );

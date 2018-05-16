@@ -1,35 +1,46 @@
-# My implementation of simple Redux and another supporting libraries.
+# My own implementation of simple Redux and another supporting libraries.
+
+![What I cannot create I do not understand](feynman.png)
 
 ## Implemented:
 - [ ] redux
   - [x] createStore
-  - [ ] createStore enhancers
+  - [x] createStore enhancers
     - Take an existing createStore method as a parameter
     - Return a new createStore method
     - Can return a new store API object that substitutes new versions of store methods
     - Multiple enhancers can be composed together to form a new enhancer
   - [x] combineReducers
-  - [ ] bindActionCreators
-  - [ ] applyMiddleware - https://redux.js.org/api-reference/applymiddleware
-  - [ ] compose
+  - [x] bindActionCreators
+  - [x] applyMiddleware - https://redux.js.org/api-reference/applymiddleware
+  - [x] compose
 - [x] react-redux
-  - [ ] connect
+  - [x] connect
     - [ ] Optimize
   - [x] Provide component
-- [ ] recompose
+- [ ] reselect
   - [ ] createSelector
   - [ ] createStructuredSelector
-- [ ] recompact
+- [ ] recompose
+  - [x] setStatic
+  - [x] onlyUpdateForKeys
 - [ ] middleware
-  - [ ] loggerMiddleware
+  - [x] loggerMiddleware
   - [ ] thunkMiddleware
   - [ ] promiseMiddleware
   - [ ] simple sagaMiddleware
   - [ ] simple redux-observable middleware - https://redux-observable.js.org/
     - [ ] Netflix JavaScript Talks - RxJS + Redux + React = Amazing! https://www.youtube.com/watch?v=AslncyG8whg
-- [ ] High order components - https://medium.freecodecamp.org/higher-order-components-the-ultimate-guide-b453a68bb851
-  - [ ] With props - https://github.com/acdlite/recompose/blob/master/docs/API.md#withprops
-- [ ] router
+- [ ] redux-crud-store
+  - [x] fetchRecord
+    - [ ] error handling
+  - [x] fetchCollection
+    - [ ] error handling
+  - [ ] query
+  - [ ] api for custom fetch
+    - [ ] bulk create
+  - [ ] params in query
+- [ ] react-router
 - [ ] something else???
 - [ ] "cn" decorator from https://habrahabr.ru/company/alfa/blog/340522/
 

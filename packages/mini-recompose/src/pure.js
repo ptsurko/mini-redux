@@ -1,15 +1,12 @@
 import React from 'react';
+import { isShallowEqual } from '@ptsurko/mini-lodash';
 import wrapDisplayName from './wrapDisplayName';
 import setDisplayName from './setDisplayName';
-
-const shallowEqual = (props, newProps) => {
-  return true;
-};
 
 const pure = () => (BaseComponent) => {
   class WrapperComponent extends React.Component {
     shouldComponentUpdate(nextProps) {
-      return !shallowEqual(this.props, nextProps);
+      return !isShallowEqual(this.props, nextProps);
     }
 
     render() {

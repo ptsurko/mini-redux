@@ -2,18 +2,23 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "build:lib": "lerna exec --scope @ptsurko/mini-* --parallel -- babel src -d dist --config-file ../../.babelrc",
+    "build:lib": "lerna exec --scope @ptsurko/mini-* --parallel -- babel src -d dist --config-file ../../.babelrc  --source-maps",
     "cleanup:full": "lerna exec --parallel -- rimraf dist node_modules",
     "cleanup": "lerna exec --parallel -- rimraf dist",
     "lint": "eslint --cache --ignore-path .gitignore ./packages/*/src",
-    "start": "concurrently \"npm run watch:lib\" \"npm run start:app\"",
-    "start:app": "lerna exec --scope @ptsurko/app* --parallel -- npm run start",
-    "watch:lib": "npm run build:lib -- -w"
+    "test": "jest",
+    "start:app": "concurrently \"yarn watch:lib\" \"yarn watch:app\"",
+    "start:app-crud": "concurrently \"yarn watch:lib\" \"yarn watch:app-crud\"",
+    "watch:app": "lerna exec --scope @ptsurko/app --parallel -- yarn start",
+    "watch:app-crud": "lerna exec --scope @ptsurko/app-crud --parallel -- yarn start",
+    "watch:lib": "yarn build:lib -- -w"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
@@ -23,8 +28,21 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "jest": "^22.4.3",
     "lerna": "^2.11.0",
+    "regenerator-runtime": "^0.11.1",
     "rimraf": "^2.6.2"
   },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ],
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/packages/.*/build",
+      "/packages/.*/dist"
+    ]
+  }
 }

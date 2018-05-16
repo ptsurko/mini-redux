@@ -1,17 +1,19 @@
 {
-  "name": "@ptsurko/mini-recompose",
+  "name": "@ptsurko/mini-redux-crud-store",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@ptsurko/mini-lodash": "^1.0.0",
-    "prop-types": "^15.6.0",
+    "@ptsurko/mini-recompose": "^1.0.0",
+    "@ptsurko/mini-redux": "^1.0.0",
+    "prop-types": "^15.6.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }

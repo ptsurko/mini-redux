@@ -2,7 +2,7 @@
 const isFunction = (obj) => typeof obj === 'function';
 const isObject = (obj) => obj === Object(obj);
 
-const wrapDispatch = (actionCreator, dispatch) => (params) => dispatch(actionCreator(params));
+const wrapDispatch = (actionCreator, dispatch) => (...params) => dispatch(actionCreator(...params));
 
 const bindActionCreators = (actionCreators, dispatch) => {
   if (isFunction(actionCreators)) {

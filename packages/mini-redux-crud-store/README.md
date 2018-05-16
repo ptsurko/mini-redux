@@ -1,0 +1,2 @@
+# Mini Redux-crud-store
+

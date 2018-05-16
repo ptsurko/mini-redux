@@ -3,5 +3,11 @@
     "react",
     ["env", { "modules": false }]
   ],
+  "env": {
+    "test": {
+      "presets": ["env", "react"]
+    }
+  },
+  "plugins": ["transform-object-rest-spread"],
   "ignore": ["node_modules", "dist"]
 }

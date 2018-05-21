@@ -40,9 +40,22 @@
   - [ ] api for custom fetch
     - [ ] bulk create
   - [ ] params in query
+- [ ] animated
+  - https://blog.usejournal.com/why-react-needed-yet-another-animation-library-introducing-react-spring-8212e424c5ce
+  - https://speakerdeck.com/vjeux/react-rally-animated-react-performance-toolbox
+  - react-spring
+- [ ] mini-components
+ - [ ] LazyImage component https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/
+ - [ ] Modal dialog - https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202
+ - [ ] Pivot table (stateless + stateful) with DataFrame data format
+ - [ ] Table with editable cells/rows/all
 - [ ] react-router
 - [ ] something else???
 - [ ] "cn" decorator from https://habrahabr.ru/company/alfa/blog/340522/
+- [ ] Render Prop
+  - https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+  - https://blog.kentcdodds.com/compose-render-props-46cf491e9d19
+  - https://github.com/paypal/downshift
 
 ## Inspiration
  * [You Might Need Redux](http://blog.isquaredsoftware.com/presentations/2017-09-might-need-redux-ecosystem)

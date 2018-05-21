@@ -7,6 +7,7 @@
     "cleanup": "lerna exec --parallel -- rimraf dist",
     "lint": "eslint --cache --ignore-path .gitignore ./packages/*/src",
     "test": "jest",
+    "start:components-storybook": "lerna exec --scope @ptsurko/mini-components -- yarn storybook",
     "start:app": "concurrently \"yarn watch:lib\" \"yarn watch:app\"",
     "start:app-crud": "concurrently \"yarn watch:lib\" \"yarn watch:app-crud\"",
     "watch:app": "lerna exec --scope @ptsurko/app --parallel -- yarn start",
